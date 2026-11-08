@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pots – class sentence game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-student">
+<div id="err" hidden></div>
+
+<!-- STUDENT: join -->
+<section id="vJoin" class="card narrow" hidden>
+  <h1>Join the game</h1>
+  <label for="jName">Your name</label>
+  <input id="jName" maxlength="20" autocomplete="off">
+  <button id="jGo">Join</button>
+</section>
+
+<!-- STUDENT: play (no sentence shown on purpose) -->
+<section id="vStudent" class="narrow" hidden>
+  <div class="id card">
+    <h1 id="sName"></h1>
+    <p>Number <b id="sNum"></b> · Pot <b id="sPot"></b> · You are <b id="sSlot" class="slot"></b></p>
+  </div>
+  <div class="card">
+    <p id="sMsg" class="status"></p>
+    <input id="sInput" maxlength="40" autocomplete="off" disabled>
+    <button id="sSend" disabled>Send word</button>
+  </div>
+</section>
+
+<!-- TEACHER: login -->
+<section id="vLogin" class="card narrow" hidden>
+  <h1>Teacher sign-in</h1>
+  <label for="tSecret">Secret</label>
+  <input id="tSecret" type="password" autocomplete="off">
+  <button id="tGo">Sign in</button>
+  <p id="tMsg" class="status"></p>
+</section>
+
+<!-- TEACHER + DISPLAY: board -->
+<section id="vBoard" hidden>
+  <div id="ctl" class="card" hidden>
+    <div class="row">
+      <button id="cPrev">Previous</button>
+      <select id="cSel"></select>
+      <button id="cNext">Next</button>
+      <label>Per pot <input id="cPot" type="number" min="1" max="8" value="3"></label>
+      <button id="cReset" class="ghost">Reset sentence</button>
+      <button id="cClass" class="ghost">New class</button>
+    </div>
+    <details>
+      <summary>Edit sentences</summary>
+      <input id="eTitle" placeholder="Title">
+      <textarea id="eText" rows="3" placeholder="The {adjective:A} {noun:B} {verb:C} home."></textarea>
+      <p class="hint">Write blanks as <code>{kind:LETTER}</code>. The letter is whose turn it is (A, B, C…).</p>
+      <div class="row"><button id="eSave">Save</button><button id="eNew" class="ghost">New sentence</button><button id="eDel" class="ghost">Delete</button></div>
+    </details>
+  </div>
+  <p id="joinHint" class="hint"></p>
+  <div id="pots"></div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
